@@ -1,6 +1,6 @@
 <?php
 
-class TasksController extends \BaseController {
+class ContactsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class TasksController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Task::all();
+		return Contact::all();
 	}
 
 
@@ -20,7 +20,7 @@ class TasksController extends \BaseController {
 	 */
 	public function create()
 	{
-		
+		//
 	}
 
 
@@ -30,12 +30,14 @@ class TasksController extends \BaseController {
 	 * @return Response
 	 */
 	public function store()
-	{	
-		$task=new Task;
-		$task->title=Input::get('title');
-		$task->completed=Input::get('completed');
-		$task->save();
-		return $task;
+	{
+		$contact=new Contact;
+		$contact->first_name=Input::get('first_name');
+		$contact->last_name=Input::get('last_name');
+		$contact->email=Input::get('email');
+		$contact->description=Input::get('description');
+		$contact->save();
+		return $contact;
 	}
 
 
@@ -47,7 +49,7 @@ class TasksController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return Task::find($id);
+		return Contact::find($id);
 	}
 
 
@@ -71,12 +73,9 @@ class TasksController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//$input=Input::json();
-
-		$task=Task::find($id);
-		$task->title=Input::get('title');
-		$task->completed=Input::get('completed');
-		$task->save();
+		$contact=Contact::find($id);
+		$contact->update(Input::all());
+		return $contact;
 	}
 
 
@@ -88,7 +87,7 @@ class TasksController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		return Task::find($id)->delete();
+		return Contact::find($id)->delete();
 	}
 
 
