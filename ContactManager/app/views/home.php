@@ -65,14 +65,41 @@
 					<td>Last Name</td>
 					<td>Email</td>
 					<td>Description</td>
+					<td>Options</td>
 			</thead>
 		</table>
 	</div>
+	<div id="editForm">	
+	</div>
+	<script type="text/template" id="editContact">
+		<h1>Edit Contact:<%= first_name%>&nbsp;&nbsp; <%= last_name%></h1>
+		<form>
+		<div>
+			<label for="first_name">First Name</label>
+			<input type="text" placeholder="First Name" name="first_name" id="edit_first_name" value="<%= first_name%>">
+		</div>
+		<div>
+			<label for="last_name">Last Name</label>
+			<input type="text" placeholder="Last Name" name="last_name" id="edit_last_name" value="<%= last_name%>">
+		</div>
+		<div>
+			<label for="email">Email</label>
+			<input type="text" placeholder="Email" name="email" id="edit_email" value="<%= email%>">
+		</div>
+		<div>
+			<label for="description">Description</label>
+			<textarea placeholder="Description" name="description" id="edit_description" ><%= description%></textarea>
+		</div>
+		<input type="submit" value="Edit Contact">
+		<button class="cancel" type="button">Cancel</button>
+	</form>
+	</script>
 	<script id="allContactsTemplate" type="text/template">
 	<td><%= first_name %></td>
 	<td><%= last_name %></td>
 	<td><%= email %></td>
 	<td><%= description %></td>
+	<td><a href ="#contacts/<%= id%>/edit" class="edit">Edit </a>&nbsp;&nbsp;<a href ="#contacts/<%= id%>" class="delete">Delete</a></td>
 	</script>
 	<script type="text/javascript" src="//code.jquery.com/jquery.js"></script>
 	<script type="text/javascript" src="//underscorejs.org/underscore.js"></script>

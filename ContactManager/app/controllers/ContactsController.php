@@ -74,7 +74,11 @@ class ContactsController extends \BaseController {
 	public function update($id)
 	{
 		$contact=Contact::find($id);
-		$contact->update(Input::all());
+		$contact->first_name=Input::get('first_name');
+		$contact->last_name=Input::get('last_name');
+		$contact->email=Input::get('email');
+		$contact->description=Input::get('description');
+		$contact->save();
 		return $contact;
 	}
 
@@ -87,7 +91,7 @@ class ContactsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		return Contact::find($id)->delete();
+		Contact::find($id)->delete();
 	}
 
 
